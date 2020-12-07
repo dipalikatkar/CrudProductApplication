@@ -1,0 +1,37 @@
+<h1>Welcome to productCrud Application</h1>
+<!--
+<ptab></ptab>
+
+<hr>
+
+
+<plist></plist>
+-->
+
+
+<a routerLink="ptab">Display table</a>
+<br>
+<a routerLink="plist">Display list</a>
+
+<hr>
+<h1>form validation example !!!!!!!!!</h1>
+<form #frm="ngForm"  (ngSubmit)="submitform(frm.value)">
+    Id:<input type="text" #id="ngModel" name="id" ngModel required><br>
+    <div *ngIf="id.errors && (id.dirty || id.touched)">
+                <h3>please enter id its cant empty</h3>
+    </div>
+    Name:<input type="text"  #nm="ngModel" name="nm" ngModel required minlength="3"><br>
+    <div *ngIf="nm.errors && (nm.dirty || nm.touched)">
+        <div [hidden]="!nm.errors.required">
+            <h3>please enter name its cant empty</h3>
+        </div>
+        <div [hidden]="!nm.errors.minlength">
+            <h3>please enter name and minlength should be 3</h3>
+
+        </div>
+    </div>
+    <button type="submit" name="btn" [disabled]="!frm.valid">Submit</button>
+</form>
+<hr>
+
+<router-outlet></router-outlet>
